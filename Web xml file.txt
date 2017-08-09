@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>LoginDisplayLogout</display-name>
+  <welcome-file-list>
+    <welcome-file>Login.html</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>ValidateDetails</display-name>
+    <servlet-name>ValidateDetails</servlet-name>
+    <servlet-class>ValidateDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ValidateDetails</servlet-name>
+    <url-pattern>/ValidateDetails</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewPage</display-name>
+    <servlet-name>ViewPage</servlet-name>
+    <servlet-class>ViewPage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewPage</servlet-name>
+    <url-pattern>/ViewPage</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowDetails</display-name>
+    <servlet-name>ShowDetails</servlet-name>
+    <servlet-class>ShowDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowDetails</servlet-name>
+    <url-pattern>/ShowDetails</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Logout</display-name>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>Logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/Logout</url-pattern>
+  </servlet-mapping>
+</web-app>
