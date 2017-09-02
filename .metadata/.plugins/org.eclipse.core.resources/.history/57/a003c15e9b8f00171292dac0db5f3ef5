@@ -1,0 +1,9 @@
+package org.meghana.creditcardapi.transactions.model;
+
+public class test {
+	
+	public static void main(String[] args) {
+		public String dob = "08/18/1990";
+	}
+
+}

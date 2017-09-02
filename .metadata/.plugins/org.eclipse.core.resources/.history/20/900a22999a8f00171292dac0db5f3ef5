@@ -1,0 +1,56 @@
+package org.meghana.creditcardapi.transactions.model;
+
+
+import java.util.List;
+
+public class Account {
+	
+	private String name;
+	private int id;
+	private String dob;
+	private int ssn;
+	
+	public Account(String name, int id, String dob, int ssn){
+		this.name=name;
+		this.id=id;
+		this.dob=dob;
+		this.ssn=ssn;
+	}
+	public String getName() {
+		return name;
+	}
+	@Override
+	public String toString() {
+		return "Account [name=" + name + ", id=" + id + ", dob=" + dob + ", ssn=" + ssn + "]";
+	}
+	public int getSsn() {
+		return ssn;
+	}
+	public void setSsn(int ssn) {
+		this.ssn = ssn;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getId() {
+		return id;
+	}
+
+	public String getDob() {
+		return dob;
+	}
+	public void setDob(String dob) {
+		this.dob = dob;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+}

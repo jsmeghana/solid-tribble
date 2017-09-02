@@ -1,0 +1,10 @@
+package org.meghana.creditcardapi.transactions.model;
+
+import java.util.List;
+
+public interface E {
+	
+	List<Float> debit = new List<Float>();
+	private List<E> credit;
+
+}

@@ -1,0 +1,10 @@
+package org.meghana.creditcardapi.transactions.model;
+
+public interface AccountDAO {
+	public void setDataSource(DataSource ds);
+	
+	 public void create(String name, String ssn, String dob);
+	 
+	 public Account getAccount(String ssn);
+	
+}

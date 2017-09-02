@@ -1,0 +1,5 @@
+package org.meghana.creditcardapi.transactions.resources;
+
+public class CreditcardResource {
+
+}

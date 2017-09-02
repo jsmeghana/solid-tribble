@@ -1,0 +1,87 @@
+package org.meghana.creditcardapi.transactions.dao;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import javax.sql.DataSource;
+
+import org.meghana.creditcardapi.transactions.model.Account;
+import org.meghana.creditcardapi.transactions.model.AccountDAO;
+import org.meghana.creditcardapi.transactions.model.Ledger;
+import org.meghana.creditcardapi.transactions.model.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+public class AccountDaoImpl implements AccountDAO{
+	@Autowired
+	private DataSource dataSource;
+	private JdbcTemplate jdbcTemplateObject;
+	
+	public void setDataSource(DataSource ds) {
+		this.dataSource = dataSource;
+	    this.jdbcTemplateObject = new JdbcTemplate(dataSource);
+	}
+
+	public DataSource getDataSource() {
+		return dataSource;
+	}
+
+	@Override
+	//public void create(String name, String dob){
+	public String create(Account ac){
+		
+		 String SQL = "insert into account1 (name, dob, ssn, id) values (?, ?,?,?)";
+		 String dob = ac.getDob().replace("/", "");
+		 String Id=Integer.toString(ac.getSsn())+dob;
+		 System.out.println(Id);
+	     jdbcTemplateObject.update( SQL, ac.getName(), ac.getDob(),ac.getSsn(),Id);
+	     System.out.println("Created Account Name = " + ac.getName() + " DOB = " + ac.getDob());
+	     Transaction t = new Transaction(Id, "Account Creation", 2000);
+	     this.ImplementTransaction(t);
+	     return Id;
+	}
+	
+	public void ImplementTransaction(Transaction t){
+		String SQL = "insert into transaction1 (transactionid, transactiontype, transactiontime, amount, accountid) values (?,?,?,?,?)";
+		String timeStamp = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss").format(Calendar.getInstance().getTime()); 
+		String TransactionId = t.getId()+timeStamp.replaceAll("[-:]", "");
+	    jdbcTemplateObject.update( SQL, TransactionId, t.getTransactiontype(),timeStamp,t.getAmount(),t.getId());
+	    System.out.println("Transaction has been completed sucessfully!!");	
+		Ledger l = new Ledger(t.getId(),t.getTransactiontype(),t.getAmount(),t.getTransactionid());
+	}
+	
+	public void ImplementLedger(Ledger l){
+		String SQL= "insert into ledger (transactionid, transactiontype, amount, accountid) values (?,?,?,?)";
+		jdbcTemplateObject.update(SQL,l.getTransactionid(),l.getTransactiontype(), l.getAmount(), l.getId());
+		System.out.println("Ledger was created for the transaction sucessfully");
+		
+	}
+	
+
+	@Override
+	public Account getAccountdetails(String id) {
+		String SQL = "select * from account1 where id = ?";
+	      Account account = jdbcTemplateObject.queryForObject(SQL, 
+	         new Object[]{id}, new AccountMapper());
+		return account;
+	}
+
+	@Override
+	public Transaction getTransaction(Account id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Ledger getLedger(Account id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	}
+	
+	
+	
+
+

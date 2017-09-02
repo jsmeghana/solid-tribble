@@ -1,0 +1,17 @@
+package org.meghana.creditcardapi.transactions.model;
+
+public class Ledger {
+	
+	private String id;
+	private String transactionid;
+	private String transactiontype;
+	private double amount;
+	public Ledger(String id, String transactiontype, double amount) {
+		super();
+		this.id = id;
+		this.transactiontype = transactiontype;
+		this.amount = amount;
+	}
+	
+
+}

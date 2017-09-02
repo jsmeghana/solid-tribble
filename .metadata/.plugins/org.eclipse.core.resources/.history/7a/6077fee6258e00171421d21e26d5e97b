@@ -1,0 +1,21 @@
+package org.meghana.creditcardapi.transactions.model;
+
+import java.sql.Time;
+import java.util.List;
+
+public class Account implements E {
+	
+	private int accountnum;
+	private int transactionid;
+	private String transactiontype;
+	private String timestamp;
+	private double principal;
+	private List<E> debit;
+	private List<E> credit;
+	
+	
+	
+	
+	
+
+}

@@ -1,0 +1,8 @@
+CREATE TABLE transaction1 (
+    transactionid varchar(100) NOT NULL,
+    transactiontype varchar(20) NOT NULL,
+    transactiontime varchar(20) NOT NULL,
+    amount double NOT NULL,
+    accountid varchar(20) NOT NULL,
+    FOREIGN KEY (accountid) REFERENCES account1(id)
+);

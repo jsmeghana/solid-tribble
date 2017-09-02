@@ -1,0 +1,14 @@
+package org.meghana.creditcardapi.transactions.model;
+
+import javax.sql.DataSource;
+
+public interface AccountDAO {
+	public void setDataSource(DataSource ds);
+	
+	 public void create(Account account);
+	 
+	 public Account getAccountdetails(int id);
+	 
+	 
+	
+}
