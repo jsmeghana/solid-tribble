@@ -28,6 +28,10 @@ CREATE TABLE userledger (
 );
 
 CREATE TABLE bankledger(
-
-
+transactionid varchar(100) NOT NULL,
+ transactiontype varchar(20) NOT NULL,
+ amount double NOT NULL,
+ accountid varchar(20) NOT NULL,
+ FOREIGN KEY (accountid) REFERENCES account(id)
+);
 )

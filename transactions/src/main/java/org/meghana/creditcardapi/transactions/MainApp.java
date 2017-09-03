@@ -2,6 +2,8 @@ package org.meghana.creditcardapi.transactions;
 
 import org.meghana.creditcardapi.transactions.dao.AccountDaoImpl;
 import org.meghana.creditcardapi.transactions.model.Account;
+import org.meghana.creditcardapi.transactions.model.Transaction;
+import org.meghana.creditcardapi.transactions.model.transcationType;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -14,8 +16,15 @@ public class MainApp {
 		
 		//-----Account Creation---------
 		
-		Account ac = new Account("Meghana", "03/20/1913", 1234);
-		accountdaoimpl.create(ac);
+		//Account ac = new Account("Meghana", "03/20/1912267456", 1234);
+		//accountdaoimpl.create(ac);
+		
+		
+		Transaction t= new Transaction("123403201912267456", transcationType.debit, 3000);
+		String TID=accountdaoimpl.purchase(t);
+		System.out.println(TID);
+		
+		
 		//accountdaoimpl.create("Jack", "04-20-1990");
 	
 		

@@ -1,14 +1,15 @@
 package org.meghana.creditcardapi.transactions.dao;
 
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
 import javax.sql.DataSource;
 
 import org.meghana.creditcardapi.transactions.model.Account;
 import org.meghana.creditcardapi.transactions.model.AccountDAO;
 import org.meghana.creditcardapi.transactions.model.Ledger;
 import org.meghana.creditcardapi.transactions.model.Transaction;
+import org.meghana.creditcardapi.transactions.model.transcationType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -27,21 +28,21 @@ public class AccountDaoImpl implements AccountDAO{
 	}
 
 	@Override
-	//public void create(String name, String dob){
+	
 	public String create(Account ac){
 		
 		 String SQL = "insert into account (name, dob, ssn, id,amount) values (?, ?,?,?,?)";
 		 String dob = ac.getDob().replace("/", "");
 		 String Id=Integer.toString(ac.getSsn())+dob;
 		 System.out.println(Id);
-	     jdbcTemplateObject.update( SQL, ac.getName(), ac.getDob(),ac.getSsn(),Id,ac.getAmount());
+		 jdbcTemplateObject.update( SQL, ac.getName(), ac.getDob(),ac.getSsn(),Id,ac.getAmount());
 	     System.out.println("Created Account Name = " + ac.getName() + " DOB = " + ac.getDob());
 	     Transaction t = new Transaction(Id, "Account Creation", ac.getAmount());
 	     this.ImplementTransaction(t);
 	     return Id;
 	}
 	
-	public void ImplementTransaction(Transaction t){
+	public String ImplementTransaction(Transaction t){
 		String SQL = "insert into transaction (transactionid, transactiontype, transactiontime, amount, accountid) values (?,?,?,?,?)";
 		String timeStamp = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss").format(Calendar.getInstance().getTime()); 
 		String TransactionId = t.getId()+timeStamp.replaceAll("[-:]", "");
@@ -49,16 +50,35 @@ public class AccountDaoImpl implements AccountDAO{
 	    System.out.println("Transaction has been completed sucessfully!!");	
 		Ledger l = new Ledger(t.getId(),t.getTransactiontype(),t.getAmount(),TransactionId);
 		this.ImplementLedger(l);
+		return TransactionId;
+	}
+	
+	public String applyRule(String transacationType){
+		System.out.println("This is a Bank Facing rule, that specifies the transaction type!!!");
+		if (transacationType==new transcationType().credit) return new transcationType().debit;
+		else if (transacationType == new transcationType().debit) return new transcationType().credit;
+		return transacationType;
 	}
 	
 	public void ImplementLedger(Ledger l){
-		String SQL= "insert into ledger (transactionid, transactiontype, amount, accountid) values (?,?,?,?)";
+		String SQL= "insert into userledger (transactionid, transactiontype, amount, accountid) values (?,?,?,?)";	
 		jdbcTemplateObject.update(SQL,l.getTransactionid(),l.getTransactiontype(), l.getAmount(), l.getId());
-		System.out.println("Ledger was created for the transaction sucessfully");
-		
+		SQL= "insert into bankledger (transactionid, transactiontype, amount, accountid) values (?,?,?,?)";	
+		String TransactionType = this.applyRule(l.getTransactiontype());
+		jdbcTemplateObject.update(SQL,l.getTransactionid(),TransactionType, l.getAmount(), l.getId());
+		System.out.println("Ledger was created for the transaction sucessfully");	
 	}
 	
-	public void purchase(){
+	public String purchase(Transaction t){
+		System.out.println("Starting the purchase!!!");
+		int amount= this.jdbcTemplateObject.queryForObject("select amount from account where id=?",new Object[]{t.getId()}, Integer.class);
+		double amt = t.getAmount();
+	    int am1 = (int)amt;
+		System.out.println(amount-am1);
+		String SQL= "update account set ammount=  (transactionid, transactiontype, amount, accountid) values (?,?,?,?)";	
+        this.jdbcTemplateObject.update("update account set amount= ? where id =?", (amount-am1), t.getId());
+		String tId=this.ImplementTransaction(t);
+		return tId;	
 		
 	}
 
