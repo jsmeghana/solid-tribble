@@ -1,0 +1,9 @@
+package org.meghana.creditcardapi.transactions.model;
+
+public class AccountInfo {
+	
+	public String id;
+	public String principalAmmount;
+	public List<Transaction> transactions;
+
+}

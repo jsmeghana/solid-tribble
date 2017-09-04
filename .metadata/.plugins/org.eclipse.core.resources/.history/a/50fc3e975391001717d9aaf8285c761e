@@ -1,0 +1,26 @@
+package org.meghana.creditcardapi.transactions.model;
+
+import java.util.List;
+
+public class AccountInfo {
+	
+	public String accountid;
+	public double principalAmmount;
+	public List<Transaction> transactions;
+	public String getId() {
+		return id;
+	}
+	public double getPrincipalAmmount() {
+		return principalAmmount;
+	}
+	public List<Transaction> getTransactions() {
+		return transactions;
+	}
+	public AccountInfo(String id, double principalAmmount, List<Transaction> transactions) {
+		super();
+		this.id = id;
+		this.principalAmmount = principalAmmount;
+		this.transactions = transactions;
+	}
+
+}

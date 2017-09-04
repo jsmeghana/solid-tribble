@@ -16,7 +16,6 @@ import javax.ws.rs.core.MediaType;
 
 import org.meghana.creditcardapi.transactions.dao.AccountDaoImpl;
 import org.meghana.creditcardapi.transactions.model.Account;
-import org.meghana.creditcardapi.transactions.model.AccountInfo;
 import org.meghana.creditcardapi.transactions.model.Transaction;
 import org.meghana.creditcardapi.transactions.model.transcationType;
 import org.springframework.cglib.core.GeneratorStrategy;
@@ -58,10 +57,15 @@ public class CreditcardResource {
 			
 		}
 	}
-	AccountInfo ac = new AccountInfo("123", accountBalance, tx);
-	List<AccountInfo> a = new ArrayList<>();
-	a.add(ac);
-		return gson.toJson(ac);
+	List<String> a = new ArrayList<>();
+	String accountbalance = "Account::::::"+accountBalance;
+
+	a.add(accountbalance);
+	List b = new ArrayList<>();
+	b.add(a);
+	b.add(tx);
+	
+		return gson.toJson(b);
 		}
 
 	@POST

@@ -59,9 +59,17 @@ public class CreditcardResource {
 		}
 	}
 	AccountInfo ac = new AccountInfo("123", accountBalance, tx);
+	
 	List<AccountInfo> a = new ArrayList<>();
-	a.add(ac);
-		return gson.toJson(ac);
+	
+	String accountbalance = "Account::::::"+accountBalance;
+
+	a.add(accountbalance);
+	List b = new ArrayList<>();
+	b.add(a);
+	b.add(tx);
+	
+		return gson.toJson(b);
 		}
 
 	@POST
