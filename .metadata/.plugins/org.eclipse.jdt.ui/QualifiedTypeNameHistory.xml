@@ -12,4 +12,15 @@
 <fullyQualifiedTypeName name="org.springframework.web.context.support.ServletContextAttributeExporter"/>
 <fullyQualifiedTypeName name="org.springframework.cglib.core.GeneratorStrategy"/>
 <fullyQualifiedTypeName name="org.springframework.context.support.ClassPathXmlApplicationContext"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="org.meghana.creditcardapi.transactions.dao.TransactionMapper"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="org.springframework.jdbc.core.BeanPropertyRowMapper"/>
+<fullyQualifiedTypeName name="org.meghana.creditcardapi.transactions.model.Transaction"/>
+<fullyQualifiedTypeName name="java.lang.InternalError"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="org.meghana.creditcardapi.transactions.model.transcationType"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="org.meghana.creditcardapi.transactions.model.AccountInfo"/>
+<fullyQualifiedTypeName name="javax.ws.rs.PathParam"/>
 </qualifiedTypeNameHistroy>

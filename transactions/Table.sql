@@ -19,11 +19,6 @@ CREATE TABLE transaction (
     
 );
 
-
-
-SELECT accountid FROM transaction1 ORDER BY transactiontime DESC;
-
-
 CREATE TABLE userledger (
  transactionid varchar(100) NOT NULL,
  transactiontype varchar(20) NOT NULL,
