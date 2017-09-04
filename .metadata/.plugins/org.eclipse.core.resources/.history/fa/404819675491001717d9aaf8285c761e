@@ -39,7 +39,8 @@ public class CreditcardResource {
 		AccountDaoImpl accountdaoimpl= (AccountDaoImpl)context.getBean("accountDaoImpl");
 		return accountdaoimpl;
 	}
-
+	
+	
 	Gson gson = new GsonBuilder().create();
 	@GET
 	@Path("/health")
@@ -58,6 +59,8 @@ public class CreditcardResource {
 		}
 	}
 	AccountInfo ac = new AccountInfo("123", accountBalance, tx);
+	List<AccountInfo> a = new ArrayList<>();
+	a.add(ac);
 		return gson.toJson(ac);
 		}
 
