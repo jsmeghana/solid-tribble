@@ -1,0 +1,12 @@
+127.0.0.1 - - [02/Sep/2017:21:32:47 -0700] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [02/Sep/2017:21:34:55 -0700] "GET /transactions/ HTTP/1.1" 200 247
+0:0:0:0:0:0:0:1 - - [02/Sep/2017:21:35:02 -0700] "GET /transactions/webapi/myresource HTTP/1.1" 404 949
+0:0:0:0:0:0:0:1 - - [02/Sep/2017:21:35:23 -0700] "GET /transactions/webapi/health HTTP/1.1" 404 949
+0:0:0:0:0:0:0:1 - - [02/Sep/2017:21:35:23 -0700] "GET /favicon.ico HTTP/1.1" 404 973
+127.0.0.1 - - [02/Sep/2017:21:39:31 -0700] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [02/Sep/2017:21:39:38 -0700] "GET /transactions/webapi/health HTTP/1.1" 404 949
+0:0:0:0:0:0:0:1 - - [02/Sep/2017:21:39:48 -0700] "GET /transactions/ HTTP/1.1" 200 247
+0:0:0:0:0:0:0:1 - - [02/Sep/2017:21:39:55 -0700] "GET /transactions/webapi/myresource HTTP/1.1" 404 949
+0:0:0:0:0:0:0:1 - - [02/Sep/2017:21:41:11 -0700] "GET /transactions/webapi/health HTTP/1.1" 404 949
+0:0:0:0:0:0:0:1 - - [02/Sep/2017:21:41:59 -0700] "GET /transactions/webapi/health HTTP/1.1" 404 949
+0:0:0:0:0:0:0:1 - - [02/Sep/2017:21:42:02 -0700] "GET /transactions/webapi/health HTTP/1.1" 404 949

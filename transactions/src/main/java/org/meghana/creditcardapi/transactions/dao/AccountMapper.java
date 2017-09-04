@@ -11,6 +11,8 @@ public class AccountMapper implements RowMapper<Account> {
 	@Override
 	public Account mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Account account = new Account(rs.getString("name"), rs.getString("dob"), rs.getInt("ssn"), rs.getString("id"));
+		//TransactionMapper tm = new TransactionMapper();
+		//tm.mapRow(rs, rowNum);
 		return account;
 	}
 

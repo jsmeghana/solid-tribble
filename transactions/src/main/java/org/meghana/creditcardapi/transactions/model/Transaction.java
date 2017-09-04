@@ -1,18 +1,35 @@
 package org.meghana.creditcardapi.transactions.model;
 
+import java.util.Date;
+
 public class Transaction {
 	
 	private String id;
 	private String transactionid;
 	private String transactiontype;
+	
+	public Transaction(){
+		
+	}
 	public Transaction(String id, String transactiontype, double amount) {
 		super();
 		this.id = id;
 		this.transactiontype = transactiontype;
 		this.amount = amount;
+	
 	}
+	private String time;
 	private String timestamp;
 	private double amount;
+	
+	public Transaction(String id, String transactiontype, double amount, String timestamp) {
+		super();
+		this.id = id;
+		this.transactiontype = transactiontype;
+		this.amount = amount;
+		this.timestamp = timestamp;
+	
+	}
 	public String getTransactionid() {
 		return transactionid;
 	}

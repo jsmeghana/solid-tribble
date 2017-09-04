@@ -1,0 +1,48 @@
+package org.meghana.creditcardapi.transactions.resources;
+
+
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import org.meghana.creditcardapi.transactions.dao.AccountDaoImpl;
+import org.meghana.creditcardapi.transactions.model.Account;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+@Path("/accounts")
+public class CreditcardResource {
+	
+	
+	
+	Gson gson = new GsonBuilder().create();
+	@GET
+	@Path("/health")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getHealthstatus(){
+	
+		return gson.toJson("200 OK");
+		Account ac = new Account("Prajjwal", "189", 3333);
+		//return gson.toJson(ac);
+
+		}
+
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public String createAccount(@FormParam("name") String name,
+		      @FormParam("dob") String dob,
+		      @FormParam("ssn") int ssn)
+		      Account ac = new Account(name, dob, ssn);
+		
+		return gson.toJson(ac);
+		
+	}
+}
+
+

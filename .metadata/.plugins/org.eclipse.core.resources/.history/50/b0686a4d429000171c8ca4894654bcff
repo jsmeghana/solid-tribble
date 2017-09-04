@@ -1,0 +1,7 @@
+package org.meghana.creditcardapi.transactions.model;
+
+public class transcationType {
+	
+	public final static String debit = "debit";
+
+}

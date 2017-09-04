@@ -2,7 +2,11 @@ package org.meghana.creditcardapi.transactions.dao;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+import java.util.Map;
+
 import javax.sql.DataSource;
 
 import org.meghana.creditcardapi.transactions.model.Account;
@@ -11,6 +15,7 @@ import org.meghana.creditcardapi.transactions.model.Ledger;
 import org.meghana.creditcardapi.transactions.model.Transaction;
 import org.meghana.creditcardapi.transactions.model.transcationType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class AccountDaoImpl implements AccountDAO{
@@ -43,10 +48,10 @@ public class AccountDaoImpl implements AccountDAO{
 	}
 	
 	public String ImplementTransaction(Transaction t){
-		String SQL = "insert into transaction (transactionid, transactiontype, transactiontime, amount, accountid) values (?,?,?,?,?)";
+		String SQL = "insert into transaction (transactionid, transactiontype, amount, accountid) values (?,?,?,?)";
 		String timeStamp = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss").format(Calendar.getInstance().getTime()); 
 		String TransactionId = t.getId()+timeStamp.replaceAll("[-:]", "");
-	    jdbcTemplateObject.update( SQL, TransactionId, t.getTransactiontype(),timeStamp,t.getAmount(),t.getId());
+	    jdbcTemplateObject.update( SQL, TransactionId, t.getTransactiontype(),t.getAmount(),t.getId());
 	    System.out.println("Transaction has been completed sucessfully!!");	
 		Ledger l = new Ledger(t.getId(),t.getTransactiontype(),t.getAmount(),TransactionId);
 		this.ImplementLedger(l);
@@ -91,9 +96,15 @@ public class AccountDaoImpl implements AccountDAO{
 	}
 
 	@Override
-	public Transaction getTransaction(Account id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Transaction> getTransaction(String id) {
+		String SQL= "SELECT transactionid,accountid, transactiontype, amount, transactiontime FROM transaction where accountid = ? ORDER BY transactiontime DESC";
+		System.out.println(SQL);
+		List<Transaction> tx = new ArrayList<Transaction>();
+		List<Transaction> transaction  = jdbcTemplateObject.query(SQL, new Object[] {id}, new TransactionMapper());
+				
+		System.out.println("Returned transaction list");
+		System.out.println(transaction);
+		return transaction;
 	}
 
 	@Override

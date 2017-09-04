@@ -12,18 +12,23 @@ CREATE TABLE account (
 CREATE TABLE transaction (
     transactionid varchar(100) NOT NULL,
     transactiontype varchar(20) NOT NULL,
-    transactiontime varchar(20) NOT NULL,
     amount double NOT NULL,
-    accountid varchar(20) NOT NULL,
+    accountid varchar(100) NOT NULL,
+    transactiontime TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (accountid) REFERENCES account(id)
     
 );
+
+
+
+SELECT accountid FROM transaction1 ORDER BY transactiontime DESC;
+
 
 CREATE TABLE userledger (
  transactionid varchar(100) NOT NULL,
  transactiontype varchar(20) NOT NULL,
  amount double NOT NULL,
- accountid varchar(20) NOT NULL,
+ accountid varchar(100) NOT NULL,
  FOREIGN KEY (accountid) REFERENCES account(id)
 );
 
@@ -31,7 +36,7 @@ CREATE TABLE bankledger(
 transactionid varchar(100) NOT NULL,
  transactiontype varchar(20) NOT NULL,
  amount double NOT NULL,
- accountid varchar(20) NOT NULL,
+ accountid varchar(100) NOT NULL,
  FOREIGN KEY (accountid) REFERENCES account(id)
 );
 )
