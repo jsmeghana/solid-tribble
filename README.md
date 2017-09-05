@@ -105,9 +105,9 @@ RESPONSE CODE: HTTP 200 OK
 ```
 # Create Purchase Transactions for an account
 When this operation is called ,it simulates a creditcard purchase transaction to the server.
-It applies an incoming transaction
-It records the transaction in the correct Transaction table (Journal)
-It applies the given rule to allocate the transaction in the correct ledgers (Bankledger and Userledger)
+1. It applies an incoming transaction
+2. It records the transaction in the correct Transaction table (Journal)
+3. It applies the given rule to allocate the transaction in the correct ledgers (Bankledger and Userledger)
 
 Added Enhancements to this operation
 It also stores the remaining balance on the credit limit available for that account in the Account table.
