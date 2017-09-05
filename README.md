@@ -51,10 +51,9 @@ Here is what this little application demonstrates:
 1. Full integration with the latest Spring Framework: inversion of control, dependency injection, etc.
 2. Demonstrates operations such as healthcheck,Account Creation, Create Transactions,Get outstanding balance based on the account id It   also adds the transaction based on "Credit" and "Debit" transaction types.etc. endpoints automatically on a configured port.
 3. RESTful service using annotation: supports JSON response.
-4. Exception mapping from application exceptions to the right HTTP response with exception details in the body
-5. Spring Data Integration with JDBCTemplate with just a few lines of configuration and familiar annotations.
-6. Automatic CRUD functionality against the data source using Spring JDBC DAO pattern.
-7. The code can also accomodate future extensions for transactions such as Payments, billing etc..
+4. Spring Data Integration with JDBCTemplate with just a few lines of configuration and familiar annotations.
+5. Automatic CRUD functionality against the data source using Spring JDBC DAO pattern.
+6. The code can also accomodate future extensions for transactions such as Payments, billing etc..
 
 Here are the endpoints you can call:
 ## To get health of the server, Create Accounts, Create transactions and retrive transactions and outstanding balance for an account
@@ -74,7 +73,6 @@ Response
 "200 OK"
 }
 RESPONSE CODE: HTTP 200 OK
-Location :http://localhost:8080/transactions/webapi/accounts/health
 ```
 ## Account Creation
 ## Create New Account and intitialize all the rows in the Transactions and User ledger and Bank ledger tables. 
@@ -103,7 +101,7 @@ Response Body
 }
 
 RESPONSE CODE: HTTP 200 OK
-Location: http://localhost:8080/transactions/webapi/accounts
+
 ```
 # Create Purchase Transactions for an account
 When this operation is called ,it simulates a creditcard purchase transaction to the server.
@@ -130,7 +128,7 @@ Returns the transaction id that is unique for each transaction made for that acc
 12341812196222225334220170904173649
 }
 RESPONSE CODE: HTTP 200 OK
-Location: http://localhost:8080/transactions/webapi/accounts/transactions
+
 ```
 ## Get Account Id, outstanding balance and list of transactions for an account ordered by the timestamp
 1. When this operation is called, it returns an existing account
@@ -170,7 +168,7 @@ Response
 }
 
 HTTP RESPONSE CODE: HTTP 200 OK
-Location: http://localhost:8080/transactions/webapi/accounts/{id}
+
 ```
 # About Spring JDBC and JDBCTemplate
 Spring JdbcTemplate is a powerful mechanism to connect to the database and execute SQL queries. It internally uses JDBC api, but eliminates a lot of problems of JDBC API.
