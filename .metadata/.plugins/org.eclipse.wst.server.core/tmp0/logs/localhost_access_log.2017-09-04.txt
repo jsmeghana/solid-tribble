@@ -73,3 +73,14 @@
 0:0:0:0:0:0:0:1 - - [04/Sep/2017:12:38:23 -0700] "POST /transactions/webapi/accounts/transactions?id=123418121962222253342&transactiontype=debit&amount=300 HTTP/1.1" 200 37
 127.0.0.1 - - [04/Sep/2017:13:37:15 -0700] "GET / HTTP/1.1" 404 951
 0:0:0:0:0:0:0:1 - - [04/Sep/2017:13:37:21 -0700] "GET /transactions/ HTTP/1.1" 404 977
+fe80:0:0:0:f55b:7bad:c322:67f7%13 - - [04/Sep/2017:17:09:19 -0700] "GET / HTTP/1.1" 404 951
+fe80:0:0:0:2458:c2b3:2bec:bfb%19 - - [04/Sep/2017:17:09:19 -0700] "GET / HTTP/1.1" 404 951
+169.254.11.251 - - [04/Sep/2017:17:09:20 -0700] "GET / HTTP/1.1" 404 951
+2601:644:8102:e450:f55b:7bad:c322:67f7 - - [04/Sep/2017:17:09:21 -0700] "GET / HTTP/1.1" 404 951
+2601:644:8102:e450:c1ec:bc8:2e69:bf6 - - [04/Sep/2017:17:09:22 -0700] "GET / HTTP/1.1" 404 951
+2601:644:8102:e450:0:0:0:1 - - [04/Sep/2017:17:09:23 -0700] "GET / HTTP/1.1" 404 951
+10.0.0.5 - - [04/Sep/2017:17:09:23 -0700] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [04/Sep/2017:17:34:54 -0700] "GET /transactions/webapi/accounts/health HTTP/1.1" 200 8
+0:0:0:0:0:0:0:1 - - [04/Sep/2017:17:36:49 -0700] "POST /transactions/webapi/accounts/transactions?id=123418121962222253342&transactiontype=debit&amount=300 HTTP/1.1" 200 37
+0:0:0:0:0:0:0:1 - - [04/Sep/2017:17:48:52 -0700] "POST /transactions/webapi/accounts?name=sblig&dob=08/18/200333323&ssn=12347 HTTP/1.1" 200 56
+0:0:0:0:0:0:0:1 - - [04/Sep/2017:18:30:38 -0700] "GET /transactions/webapi/accounts/123418121962222253342 HTTP/1.1" 200 1315

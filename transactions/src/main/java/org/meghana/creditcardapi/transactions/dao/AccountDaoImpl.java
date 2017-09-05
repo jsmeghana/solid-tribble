@@ -59,7 +59,7 @@ public class AccountDaoImpl implements AccountDAO{
 	}
 	
 	public String applyRule(String transacationType){
-		System.out.println("This is a Bank Facing rule, that specifies the transaction type!!!");
+		
 		if (transacationType==new transcationType().credit) return new transcationType().debit;
 		else if (transacationType == new transcationType().debit) return new transcationType().credit;
 		return transacationType;
@@ -71,15 +71,14 @@ public class AccountDaoImpl implements AccountDAO{
 		SQL= "insert into bankledger (transactionid, transactiontype, amount, accountid) values (?,?,?,?)";	
 		String TransactionType = this.applyRule(l.getTransactiontype());
 		jdbcTemplateObject.update(SQL,l.getTransactionid(),TransactionType, l.getAmount(), l.getId());
-		System.out.println("Ledger was created for the transaction sucessfully");	
+		
 	}
 	
 	public String purchase(Transaction t){
-		System.out.println("Starting the purchase!!!");
+		
 		int amount= this.jdbcTemplateObject.queryForObject("select amount from account where id=?",new Object[]{t.getId()}, Integer.class);
 		double amt = t.getAmount();
 	    int am1 = (int)amt;
-		System.out.println(amount-am1);
 		String SQL= "update account set ammount=  (transactionid, transactiontype, amount, accountid) values (?,?,?,?)";	
         this.jdbcTemplateObject.update("update account set amount= ? where id =?", (amount-am1), t.getId());
 		String tId=this.ImplementTransaction(t);
