@@ -6,15 +6,11 @@ import javax.sql.DataSource;
 
 public interface AccountDAO {
 	public void setDataSource(DataSource ds);
-	
-    public List<Transaction> getTransaction(String id);
+
+	public List<Transaction> getTransaction(String id);
 
 	public String create(Account ac);
 
 	public Account getAccountdetails(String id);
-	
-	public Ledger getLedger(Account id);
-	 
-	
-		
+
 }

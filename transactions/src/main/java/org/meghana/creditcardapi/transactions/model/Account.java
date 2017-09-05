@@ -1,33 +1,31 @@
 package org.meghana.creditcardapi.transactions.model;
 
-
-import java.util.List;
-
 public class Account {
-	
+
 	private String name;
 	private String id;
 	private String dob;
 	private int ssn;
 	private double amount;
-	
-	public Account(String name, String dob, int ssn){
-		this.name=name;
-		this.dob=dob;
-		this.ssn=ssn;
+
+	public Account(String name, String dob, int ssn) {
+		this.name = name;
+		this.dob = dob;
+		this.ssn = ssn;
 	}
-	
-	public Account(String name, String dob, int ssn, String id){
-		this.name=name;
-		this.dob=dob;
-		this.ssn=ssn;
+
+	public Account(String name, String dob, int ssn, String id) {
+		this.name = name;
+		this.dob = dob;
+		this.ssn = ssn;
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
-    
-	public double getAmount(){
+
+	public double getAmount() {
 		return 2000d;
 	}
 
@@ -42,16 +40,5 @@ public class Account {
 	public String getDob() {
 		return dob;
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

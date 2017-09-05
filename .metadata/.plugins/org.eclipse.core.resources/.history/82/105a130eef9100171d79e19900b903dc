@@ -1,0 +1,15 @@
+package org.meghana.creditcardapi.transactions.exceptions;
+
+public class DataNotFoundException extends RuntimeException{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6659838129239247724L;
+
+	public DataNotFoundException(String id){
+		super(id);
+	}
+	
+
+}

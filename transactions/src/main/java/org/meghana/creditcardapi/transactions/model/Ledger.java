@@ -1,42 +1,50 @@
 package org.meghana.creditcardapi.transactions.model;
 
 public class Ledger {
-	
+
 	private String id;
 	private String transactionid;
 	private String transactiontype;
 	private double amount;
+
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	public String getTransactionid() {
 		return transactionid;
 	}
+
 	public void setTransactionid(String transactionid) {
 		this.transactionid = transactionid;
 	}
+
 	public String getTransactiontype() {
 		return transactiontype;
 	}
+
 	public void setTransactiontype(String transactiontype) {
 		this.transactiontype = transactiontype;
 	}
+
 	public double getAmount() {
 		return amount;
 	}
+
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
+
 	public Ledger(String id, String transactiontype, double amount, String transactionid) {
 		super();
 		this.id = id;
 		this.transactiontype = transactiontype;
 		this.amount = amount;
-		this.transactionid= transactionid;
+		this.transactionid = transactionid;
 	}
-	
 
 }

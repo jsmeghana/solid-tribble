@@ -1,7 +1,5 @@
 package org.meghana.creditcardapi.transactions;
 
-
-
 import java.util.List;
 
 import javax.ws.rs.GET;
@@ -23,68 +21,58 @@ import com.google.gson.GsonBuilder;
 
 @Path("/accounts")
 public class CreditcardResource {
-	
-	
-	
-	public AccountDaoImpl getObject(){
+
+	public AccountDaoImpl getObject() {
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-		AccountDaoImpl accountdaoimpl= (AccountDaoImpl)context.getBean("accountDaoImpl");
+		AccountDaoImpl accountdaoimpl = (AccountDaoImpl) context.getBean("accountDaoImpl");
 		return accountdaoimpl;
 	}
 
 	Gson gson = new GsonBuilder().create();
-	
+
 	@GET
 	@Path("/health")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getHealthstatus(){
+	public String getHealthstatus() {
 		return gson.toJson("200 OK");
 	}
-	
-	
+
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getAccountdetails(@PathParam("id") String id){
-		System.out.println(id);
-	List<Transaction> tx= this.getObject().getTransaction(id);
-	double accountBalance=0;
-	for (Transaction t: tx){
-		String transactionType = t.getTransactiontype();
-		System.out.println(transactionType);
-		if (transactionType.equals("debit")){
-			accountBalance=accountBalance+t.getAmount();
+	public String getAccountdetails(@PathParam("id") String id) {
+		List<Transaction> tx = this.getObject().getTransaction(id);
+		double accountBalance = 0;
+		for (Transaction t : tx) {
+			String transactionType = t.getTransactiontype();
+			if (transactionType.equals("debit")) {
+				accountBalance = accountBalance + t.getAmount();
+			}
 		}
-	}
-	AccountInfo ac = new AccountInfo(id, accountBalance, tx);
+		AccountInfo ac = new AccountInfo(id, accountBalance, tx);
 		return gson.toJson(ac);
-		}
+	}
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-	public String createAccount(@QueryParam("name") String name,
-			@QueryParam("dob") String dob,
-			@QueryParam("ssn") int ssn){
-		     Account ac = new Account(name, dob, ssn);		      
-		    String Id= this.getObject().create(ac);
-		    AccountInfo accountinfo= new AccountInfo(Id);
-			
+	public String createAccount(@QueryParam("name") String name, @QueryParam("dob") String dob,
+			@QueryParam("ssn") int ssn) {
+		Account ac = new Account(name, dob, ssn);
+		String Id = this.getObject().create(ac);
+		AccountInfo accountinfo = new AccountInfo(Id);
+
 		return gson.toJson(accountinfo);
-		
+
 	}
-	
+
 	@POST
 	@Path("/transactions")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String createPurchase(@QueryParam("id") String id,
-			@QueryParam("transactiontype") String transactiontype,
-			@QueryParam("amount") double amount){
-		Transaction transaction= new Transaction(id,transactiontype,amount);
-		String Id= this.getObject().purchase(transaction);
+	public String createPurchase(@QueryParam("id") String id, @QueryParam("transactiontype") String transactiontype,
+			@QueryParam("amount") double amount) {
+		Transaction transaction = new Transaction(id, transactiontype, amount);
+		String Id = this.getObject().purchase(transaction);
 		return gson.toJson(Id);
 	}
-	
-	
+
 }
-
-

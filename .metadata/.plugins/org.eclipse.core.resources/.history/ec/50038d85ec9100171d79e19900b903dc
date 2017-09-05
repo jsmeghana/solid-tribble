@@ -1,0 +1,5 @@
+package org.meghana.creditcardapi.transactions.exceptions;
+
+public class DataNotFoundExceptionMapper {
+
+}
