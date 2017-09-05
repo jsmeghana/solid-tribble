@@ -76,6 +76,7 @@ Response
 RESPONSE CODE: HTTP 200 OK
 Location :http://localhost:8080/transactions/webapi/accounts/health
 ```
+## Account Creation
 ## Create New Account and intitialize all the rows in the Transactions and User ledger and Bank ledger tables. 
 1. When this operation is called, it creates a new account and initializes the Transaction(journal) and ledgers required for an account
  and returns the account id for further usage.
@@ -171,3 +172,19 @@ Response
 HTTP RESPONSE CODE: HTTP 200 OK
 Location: http://localhost:8080/transactions/webapi/accounts/{id}
 ```
+# About Spring JDBC and JDBCTemplate
+Spring JdbcTemplate is a powerful mechanism to connect to the database and execute SQL queries. It internally uses JDBC api, but eliminates a lot of problems of JDBC API.
+
+## Problems of JDBC API
+
+The problems of JDBC API are as follows:
+
+1. We need to write a lot of code before and after executing the query, such as creating connection, statement, closing resultset, connection etc.
+2. We need to perform exception handling code on the database logic.
+3. We need to handle transaction.
+4. Repetition of all these codes from one to another database logic is a time consuming task.
+
+## Advantages
+Spring JdbcTemplate eliminates all the above mentioned problems of JDBC API. It provides you methods to write the queries directly, so it saves a lot of work and time.
+
+## Questions or comments: jsmeghana@gmail.com
