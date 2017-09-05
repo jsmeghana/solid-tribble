@@ -5,8 +5,8 @@ It provides a complete built-in health check, metrics and much more.
 ## How to Run
 This application is packaged as a war and it runs on Tomcat. Tomcat v7.0 installation is necessary.
 1. Clone this repository
-2. Make sure you are using JDK 1.7 and Maven 4.x
-3. You can build the project and run the tests by running `mvn clean package`
+2. Make sure you are using JDK 1.8 and Maven 4.x
+3. You can build the project by running `mvn clean install`
 4. Once it is successfully built, you can right click on the project "transactions" ‒> run on server‒>Select Tomact V7.0 and add the transaction project‒>finish
 5. Check the console in the IDE to see if the project was successfully deployed. If it was successful you should see something like this
 ```
@@ -20,7 +20,7 @@ INFO: Server startup in 17118 ms
 4. You could open the MYSQL 5.6 command client and connect to the Database or use the workbench provided by MYSQL.
 5. Use SQL query 'CREATE DATABASE databaseName' to create a database.
 6. Type 'USE databasename' to begin using the database
-7. The project has a `Table.sql` file at path `solid-tribble\transactions\Table.sql` that contains all the queries required to create tables in this project.
+7. The project has a `Table.sql` file at path `solid-tribble\transactions\Table.sql` that contains all the queries required to create tables in this project. You can copy the queries in the database to create the tables.
 8. As this project uses Spring, make sure that the user name,password and the database name that you created is updated in the `spring.xml` path `solid-tribble\transactions\src\main\java\spring.xml` file as shown below.
 The database name can be changed right after the localhost:3360/databasename
 ```
@@ -86,7 +86,7 @@ Accepts: Query Parameters (It requires 3 parameters to create an account)
 Example:
 name=sbli
 dob =04/12/2012
-ssn=ssn=123474
+ssn=123474
 eg Request URL: http://localhost:8080/transactions/webapi/accounts?name=sblig&dob=04/12/2012&ssn=123474
 
 Response : Returns the Account Id from the database table account back to the user for future use. This account Id is unique for each person and I have created it by combining the DOB and SSN. It also indicates that the outstanding balance is 0 as your account is new.
