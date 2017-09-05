@@ -107,7 +107,9 @@ RESPONSE CODE: HTTP 200 OK
 When this operation is called ,it simulates a creditcard purchase transaction to the server.
 1. It applies an incoming transaction
 2. It records the transaction in the correct Transaction table (Journal)
-3. It applies the given rule to allocate the transaction in the correct ledgers (Bankledger and Userledger)
+3. It applies the given rule to allocate the transaction in the correct ledgers (Bankledger and Userledger).
+4. userledger table will have only **"debit"** entries.
+5. bankledger table will have only **"credit"** entries (also called principal amount)
 
 Added Enhancements to this operation
 It also stores the remaining balance on the credit limit available for that account in the Account table.
