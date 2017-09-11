@@ -29,6 +29,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Spring"/>
-	<classpathentry kind="lib" path="C:/Users/MEGH/Desktop/commons-logging-1.2/commons-logging-1.2-javadoc.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -7,7 +7,7 @@ This application is packaged as a war and it runs on Tomcat. Tomcat v7.0 install
 1. Clone this repository
 2. Make sure you are using JDK 1.8 and Maven 4.x
 3. You can build the project by running `mvn clean install`
-4. Once it is successfully built, you can right click on the project "transactions" ‒> run as->run on server‒>Select Tomact V7.0 and add the transaction project‒>finish
+4. Once it is successfully built, you can right click on the project "transactions" ‒> run on server‒>Select Tomact V7.0 and add the transaction project‒>finish
 5. Check the console in the IDE to see if the project was successfully deployed. If it was successful you should see something like this
 ```
 Sep 04, 2017 1:37:14 PM org.apache.catalina.startup.Catalina start
